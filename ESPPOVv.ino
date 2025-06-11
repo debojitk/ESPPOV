@@ -17,8 +17,6 @@
 #define HalSensor D2
 #define NUM_LEDS   72
 #define IMAGES_LINES 200
-//#define FASTLED_FORCE_SOFTWARE_SPI
-//#define FASTLED_ESP8266_RAW_PIN_ORDER
 
 #define SPI_FLASH_SEC_SIZE 4096
 
@@ -1263,12 +1261,6 @@ void setup() {
 	Serial.println(WiFi.localIP());
 	Serial.println(ArduinoOTA.getHostname());
 	//*************ota setup end*******************
-
-//	FastLED.addLeds<SK9822, DATA_PIN, CLOCK_PIN, BGR, DATA_RATE_MHZ(12)>(leds,
-//			NUM_LEDS);
-//	FastLED.setBrightness(20);
-//	FastLED.clear();
-//	FastLED.show();
 	strip.begin();
 	strip.clear();
 	//strip.show();
@@ -1281,7 +1273,6 @@ void setup() {
 	sort_image();
 	Restore_address();
 
-//MyIP=WiFi.softAPIP().toString();
 	Serial.print("AP IP address: ");
 	Serial.println(WiFi.softAPIP());
 	server.on("/upload", HTTP_POST, []() {
@@ -1481,4 +1472,4 @@ void testStrip() {
 // Upload the files
 // set the priority and duration with SIM command
 // use CSP to load images into raw flash
-// use SHO command to start the show
+// use SHO=1 command to start the show
